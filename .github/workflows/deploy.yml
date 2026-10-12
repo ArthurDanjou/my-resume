@@ -39,6 +39,14 @@ jobs:
             latexmk
             babel-english
             newtx
+            tex-gyre
+            fontaxes
+            figureversions
+            fontname
+            mweights
+            xkeyval
+            xpatch
+            xstring
             microtype
             geometry
             xcolor
