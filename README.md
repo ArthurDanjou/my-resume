@@ -25,6 +25,13 @@ Update the relevant file in `content/`. Change styling or reorder sections in
 `cv.tex`. Keep the PhD and manuscript entries current in
 `content/education.tex` and `content/manuscript.tex`.
 
+## Private cover letters
+
+Cover letters are maintained in a separate private repository, checked out
+locally at `private/cover-letters/`. The entire `private/` directory is excluded
+from this public repository by `.gitignore`. The deployment workflow publishes
+only the CV PDF and its routing file.
+
 ## Build
 
 Requires a LaTeX distribution with pdfLaTeX and latexmk, such as TeX Live or
