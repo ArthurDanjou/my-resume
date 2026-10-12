@@ -1,0 +1,73 @@
+name: Build and deploy PDF to Cloudflare Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: pdf-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: Restore LaTeX build files
+        id: tex-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: build
+          key: tex-build-${{ hashFiles('content/**/*.tex', 'cv.tex', '.github/workflows/deploy.yml') }}
+          restore-keys: tex-build-
+
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v4
+        with:
+          cache: true
+          cache_version: 1
+          texlive_version: 2026
+          packages: |
+            scheme-basic
+            latexmk
+            babel-english
+            newtx
+            microtype
+            geometry
+            xcolor
+            enumitem
+            tools
+            titlesec
+            fancyhdr
+            fontawesome5
+            hyperref
+
+      - name: Compile LaTeX
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build cv.tex
+
+      - name: Save LaTeX build files
+        if: success() && steps.tex-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: build
+          key: tex-build-${{ hashFiles('content/**/*.tex', 'cv.tex', '.github/workflows/deploy.yml') }}
+
+      - name: Prepare site
+        run: |
+          mkdir -p public
+          cp build/cv.pdf public/arthur-danjou-cv.pdf
+          cp site/_redirects public/_redirects
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=my-resume --branch=master --commit-dirty=true

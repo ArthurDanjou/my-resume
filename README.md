@@ -19,6 +19,35 @@ For Overleaf, upload `cv.tex` and the `content/` directory, then select pdfLaTeX
 The document does not require a bibliography, external fonts, images or Git
 submodules.
 
+## Deployment
+
+The workflow `.github/workflows/deploy.yml` compiles `cv.tex` on every push to
+`master` and can also be started manually. It installs the required TeX Live
+2026 packages, caches build files in `build/` and deploys the PDF to the
+Cloudflare Pages project `my-resume`.
+
+The deployment serves `/arthur-danjou-cv.pdf`. The rule in `site/_redirects`
+also serves that PDF at `/`.
+
+Configure the following GitHub Actions repository secrets:
+
+- `CLOUDFLARE_ACCOUNT_ID`. Use the account containing the `my-resume` project.
+- `CLOUDFLARE_API_TOKEN`. Use an API token with Cloudflare Pages edit permission
+  for that account.
+
+For manual project creation and deployment, use an authenticated Wrangler CLI:
+
+```sh
+wrangler pages project create my-resume --production-branch=master --force
+mkdir -p public
+cp build/cv.pdf public/arthur-danjou-cv.pdf
+cp site/_redirects public/_redirects
+wrangler pages deploy public --project-name=my-resume --branch=master
+```
+
+The Pages project must exist before the workflow's first deployment. GitHub
+Actions secrets from other repositories are not inherited by this repository.
+
 ## Layout
 
 The presentation is inspired by
