@@ -1,8 +1,29 @@
-# Research CV
+# Arthur Danjou's research CV
 
-English research curriculum vitae for Arthur Danjou. The document layout and
-section order are defined in `cv.tex`. Each section has its own editable file in
-`content/`. The compiled document is `output/pdf/arthur-danjou-cv.pdf`.
+[![Build and deploy PDF](https://github.com/ArthurDanjou/my-resume/actions/workflows/deploy.yml/badge.svg)](https://github.com/ArthurDanjou/my-resume/actions/workflows/deploy.yml)
+
+My English academic CV in applied mathematics and machine learning, written in
+LaTeX. The PDF is built with GitHub Actions and published on Cloudflare Pages.
+
+[View the latest CV](https://my-resume-cr9.pages.dev/) · [Personal website](https://arthurdanjou.fr)
+
+## Repository structure
+
+- [`cv.tex`](cv.tex) defines the typography, layout and section order.
+- [`content/`](content/) contains separate files for the header, research
+  interests, research experience, education, manuscript, projects, infrastructure
+  and skills.
+- [`output/pdf/arthur-danjou-cv.pdf`](output/pdf/arthur-danjou-cv.pdf) is the
+  checked-in PDF. The online version is rebuilt from the source on each push.
+- [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and
+  deploys the PDF.
+- [`site/_redirects`](site/_redirects) serves the PDF at the site's root URL.
+
+## Edit the CV
+
+Update the relevant file in `content/`. Change styling or reorder sections in
+`cv.tex`. Keep the PhD and manuscript entries current in
+`content/education.tex` and `content/manuscript.tex`.
 
 ## Build
 
@@ -26,8 +47,9 @@ The workflow `.github/workflows/deploy.yml` compiles `cv.tex` on every push to
 2026 packages, caches build files in `build/` and deploys the PDF to the
 Cloudflare Pages project `my-resume`.
 
-The deployment serves `/arthur-danjou-cv.pdf`. The rule in `site/_redirects`
-also serves that PDF at `/`.
+The latest PDF is available at [my-resume-cr9.pages.dev](https://my-resume-cr9.pages.dev/)
+and at `/arthur-danjou-cv.pdf`. The rule in `site/_redirects` also serves that
+PDF at `/`.
 
 Configure the following GitHub Actions repository secrets:
 
@@ -59,44 +81,14 @@ The first page groups research interests, research experience and education.
 The second page presents the manuscript, selected projects and independent
 infrastructure project, followed by technical skills and languages.
 
-## Content sources
+## Related work
 
-The CV combines the supplied CV with dates confirmed by Arthur and the following
-sources, consulted on 12 October 2026:
+- [Research profile](https://arthurdanjou.fr/research).
+- [Publications](https://arthurdanjou.fr/publications).
+- [Skills](https://arthurdanjou.fr/#skills).
+- [M2 internship report](https://m2-internship-report.arthurdanjou.fr/).
+- [Krum](https://github.com/calicarpa/krum), the Byzantine-resilient distributed
+  learning library developed during my research internship.
+- [ArtLab](https://arthurdanjou.fr/projects/artlab), my personal homelab.
 
-- [Research profile](https://arthurdanjou.fr/research). This supplies the doctoral
-  topic, supervision team and initial signSGD project.
-- [Publications and talks](https://arthurdanjou.fr/publications). This supplies
-  the manuscript status. The talk shown on the site is a placeholder, as
-  clarified by Arthur, and is excluded from the CV.
-- [Skills](https://arthurdanjou.fr/#skills). This supplies the technical skills
-  and mathematical foundations. R, TensorFlow and Keras are excluded from the
-  skills section at Arthur's request. Historical project descriptions retain
-  the tools actually used.
-- [M2 internship report](https://m2-internship-report.arthurdanjou.fr/). This
-  documents the internship contributions and experimental adaptations.
-- [Krum](https://github.com/calicarpa/krum). This supplies the software scope and
-  public code link.
-- Academic project pages linked directly in the CV.
-- Research project pages for Krum and the Byzantine-robust aggregation
-  reproduction, linked directly in the CV.
-- The ArtNotes note `2.homelab/Homelab 🏠.md` and its linked notes
-  `Home Assistant 🏡.md` and `Réseau et IoT 🌐.md`, together with the current
-  [ArtLab project page](https://arthurdanjou.fr/projects/artlab). These supply
-  the independent infrastructure project. Planned network upgrades are
-  excluded. The notes are content sources and are not needed for compilation.
-- The current manuscript source in `../krum-paper/main.tex`. This supplies the
-  exact working title, author order and academic email address. It is only a
-  content source and is not needed to compile the CV.
-
-The PhD is explicitly listed as starting in November 2026. The manuscript is
-listed as in preparation for JMLR MLOSS, without claiming submission or
-acceptance. The education entries retain the M1 and M2 distinction of the French
-degree system. The selected projects cover research software development, paper
-reproductions and academic coursework.
-Other professional experience is omitted at Arthur's request. The personal
-homelab is presented separately in `content/infrastructure.tex`.
-
-After the PhD begins, update its status in `content/education.tex`. Update the
-title and status in `content/manuscript.tex` when its bibliographic details are
-final.
+Individual project pages are linked directly in the CV.
