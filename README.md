@@ -22,8 +22,9 @@ LaTeX. The PDF is built with GitHub Actions and published on Cloudflare Pages.
 ## Edit the CV
 
 Update the relevant file in `content/`. Change styling or reorder sections in
-`cv.tex`. Keep the PhD and manuscript entries current in
-`content/education.tex` and `content/manuscript.tex`.
+`cv.tex`. Keep the PhD and internship entries current in
+`content/research-experience.tex`, and the manuscript entry in
+`content/manuscript.tex`.
 
 ## Build
 
