@@ -5,7 +5,7 @@
 My English academic CV in applied mathematics and machine learning, written in
 LaTeX. The PDF is built with GitHub Actions and published on Cloudflare Pages.
 
-[View the latest CV](https://my-resume-cr9.pages.dev/) · [Personal website](https://arthurdanjou.fr)
+[View the latest CV](https://my-resume-cr9.pages.dev/) · [Personal website](https://links.arthurdanjou.fr/website)
 
 ## Repository structure
 
@@ -77,19 +77,20 @@ The presentation is inspired by
 [Wassim Bouaziz's research CV](https://wesbz.github.io/assets/pdf/Resume_Wassim_Bouaziz_2026.pdf),
 with Times-style typography, navy blue small-cap headings, short horizontal rules,
 bold dates aligned to the right and research experience before education.
-The header uses Arthur's short GitHub and LinkedIn links.
+The header uses Arthur's short links from `links.arthurdanjou.fr`.
 The first page groups research interests, research experience and education.
 The second page presents the manuscript, selected projects and independent
 infrastructure project, followed by technical skills and languages.
 
 ## Related work
 
-- [Research profile](https://arthurdanjou.fr/research).
-- [Publications](https://arthurdanjou.fr/publications).
+- [Research profile](https://links.arthurdanjou.fr/research).
+- [Publications](https://links.arthurdanjou.fr/publications).
 - [Skills](https://arthurdanjou.fr/#skills).
-- [M2 internship report](https://m2-internship-report.arthurdanjou.fr/).
-- [Krum](https://github.com/calicarpa/krum), the Byzantine-resilient distributed
+- [M2 thesis report](https://links.arthurdanjou.fr/m2-report) and
+  [defence slides](https://links.arthurdanjou.fr/m2-slides).
+- [Krum](https://links.arthurdanjou.fr/krum), the Byzantine-resilient distributed
   learning library developed during my research internship.
-- [ArtLab](https://arthurdanjou.fr/projects/artlab), my personal homelab.
+- [ArtLab](https://links.arthurdanjou.fr/artlab), my personal homelab.
 
 Individual project pages are linked directly in the CV.
